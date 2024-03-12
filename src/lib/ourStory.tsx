@@ -14,7 +14,7 @@ export const ourStory = [
     date: "February 2019",
     title: "Escape Room Encounter",
     story:
-      "During an evening of escape rooms with friends in Vancouver, Benn meets Elena. They didn't escape the room, or each other!",
+      "During an evening of escape rooms with friends in Vancouver, Benn meets Elena. They didn't escape the room, or their friends attempt to set them up.",
   },
   {
     date: "March 2019",

@@ -41,7 +41,7 @@ import headerImage from "./assets/photos/photo5.jpg";
 
 function App() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const navMenuClasses = "flex justify-center items-center text-2xl";
+  const navMenuClasses = "flex justify-center items-center text-2xl cursor-pointer";
   const headerClasses = "text-4xl font-bimbo text-center pt-5 pb-7";
   const headerIconClasses = "h-10 w-10 float-left";
   const headerIconContainer = "flex justify-center items-center pb-5";

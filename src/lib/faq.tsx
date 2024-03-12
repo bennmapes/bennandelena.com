@@ -26,7 +26,7 @@ const questions = [
   {
     question: "What kind of attire is this affair?",
     answers: [
-      "Please feel free to wear whatever makes you feel most “you”! Casual, camp-chic, black tie, tie dye…",
+      "Festive or Casual attire and grass friendly shoes will be just perfect.",
     ],
     icon: "info",
   },
@@ -50,10 +50,9 @@ const questions = [
   {
     question: "Where is your registry?",
     answers: [
-      "Right here! (Benn you can put a link to that game where you grow things and set them on fire)",
+      "Just kidding! We have enough stuff, just bring yourselves and your dancing shoes!",
     ],
     gif: confusedGif,
-    icon: "info",
   },
   {
     question: "A few camp rules to note…",
@@ -85,20 +84,18 @@ export function FAQ({ ...props }) {
             <AccordionContent>
               <ul>
                 {question.answers.map((answer, index) => (
-                  <li
-                    key={index}
-                    className="flex justify-left items-start text-left pb-3"
-                  >
+                  <li key={index} className="items-center text-left pb-3">
                     {question.gif && <img src={question.gif}></img>}
-                    {!question.gif && (
+
+                    {question.icon && (
                       <>
                         <Icon
                           icon={question.icon}
                           className="float-left mr-3 w-3.5 h-3.5 mt-1 flex-shrink-0 top-0"
                         />{" "}
-                        {answer}
                       </>
                     )}
+                    <p className="flex flex-row">{answer}</p>
                   </li>
                 ))}
               </ul>

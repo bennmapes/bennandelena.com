@@ -1,11 +1,13 @@
+const plugin = require('tailwindcss/plugin')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -17,12 +19,12 @@ module.exports = {
       },
     },
     extend: {
-		fontFamily: {
-			"bimbo": ["BimboSharpie", "sans-serif"],
-			"bimbo-bold": ["BimboWhiteboard", "sans-serif"],
-			"calibre": ["CalibreRegular", "sans-serif"],
-			"calibre-light": ["CalibreLight", "sans-serif"],
-		},
+      fontFamily: {
+        bimbo: ["BimboSharpie", "sans-serif"],
+        "bimbo-bold": ["BimboWhiteboard", "sans-serif"],
+        calibre: ["CalibreRegular", "sans-serif"],
+        "calibre-light": ["CalibreLight", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -79,5 +81,18 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
+  plugins: [
+    require("tailwindcss-animate"),
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        ".no-scrollbar::-webkit-scrollbar": {
+          display: "none",
+        },
+        ".no-scrollbar": {
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+        },
+      });
+    }),
+  ],
+};

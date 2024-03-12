@@ -29,9 +29,8 @@ import { DeleteIcon, PlusIcon } from "lucide-react";
  * 1. Checkbox for
  *  */
 interface FormElements extends HTMLFormControlsCollection {
-  first_name: HTMLInputElement;
-  last_name: HTMLInputElement;
   email: HTMLInputElement;
+  comments: HTMLTextAreaElement;
 }
 
 interface RSVPFormElement extends HTMLFormElement {
@@ -44,6 +43,7 @@ type PeopleData = {
   camping_friday?: boolean;
   camping_saturday?: boolean;
   dietary_restrictions?: string;
+  comments?: string;
 };
 
 export function RSVP({ ...props }) {
@@ -62,13 +62,15 @@ export function RSVP({ ...props }) {
   };
 
   const webAppUrl =
-    "https://script.google.com/macros/s/AKfycbzMQJcGcQXepK9IA0E4naxcERPV6yWVIVS0voPpPrhNfS_UZ0c1xtGK6jLaEV-BNeHK/exec";
+    "https://script.google.com/macros/s/AKfycbwapD-zECJmUoLZO6tQ8-faY7mf-DaB9NBV_54vrlRrTOfSxLjN4qdbQ-1buaK9bZMY/exec";
 
   const handleRSPVSubmit = (event: React.FormEvent<RSVPFormElement>) => {
     event.preventDefault();
     const formData = new FormData();
     const email = event.currentTarget.elements.email.value;
+    const comments = event.currentTarget.elements.comments.value;
     formData.append("Email", email);
+    formData.append("Comments", comments);
     formData.append("Response", responseValue || "No Response");
     formData.append("PeopleData", JSON.stringify(peopleValues));
     console.log("Form Data", formData);
@@ -170,31 +172,36 @@ export function RSVP({ ...props }) {
                   )
                 }
               />
-              <div className="flex justify-start">
-                <Button
-                  onClick={() => {
-                    const newPeopleData = [...peopleValues];
-                    newPeopleData.splice(index, 1);
-                    setPeopleValues([...newPeopleData]);
-                  }}
-                  type="button"
-                >
-                  <DeleteIcon className="mr-2 h-4 w-4" /> Remove Guest
-                </Button>
-              </div>
+              {index !== 0 && (
+                <div className="flex justify-end">
+                  <Button
+                    onClick={() => {
+                      const newPeopleData = [...peopleValues];
+                      newPeopleData.splice(index, 1);
+                      setPeopleValues([...newPeopleData]);
+                    }}
+                    type="button"
+                  >
+                    <DeleteIcon className="mr-2 h-4 w-4" /> Remove Guest
+                  </Button>
+                </div>
+              )}
             </div>
           );
         })}
-        <div className="flex justify-end">
-          <Button
-            onClick={() => {
-              setPeopleValues([...peopleValues, {}]);
-            }}
-            type="button"
-          >
-            <PlusIcon className="mr-2 h-4 w-4" /> Add Guest
-          </Button>
-        </div>
+        {(responseValue === "Gladly Accepts" ||
+          responseValue === "Regretfully Accepts") && (
+          <div className="flex justify-start">
+            <Button
+              onClick={() => {
+                setPeopleValues([...peopleValues, {}]);
+              }}
+              type="button"
+            >
+              <PlusIcon className="mr-2 h-4 w-4" /> Add Guest
+            </Button>
+          </div>
+        )}
       </>
     );
   };
@@ -214,16 +221,26 @@ export function RSVP({ ...props }) {
           RSVP Here!
         </DialogTrigger>
         <DialogContent
-          className={"lg:max-w-screen-lg overflow-y-scroll max-h-screen"}
+          className={
+            "lg:max-w-screen-lg overflow-y-scroll max-h-screen no-scrollbar"
+          }
         >
           <DialogHeader>
-            <DialogTitle>Are you absolutely sure?</DialogTitle>
+            <DialogTitle>Can't wait to hear from you!</DialogTitle>
           </DialogHeader>
           <form id="rsvp-form" onSubmit={handleRSPVSubmit}>
             {/* Set Id to "response" */}
             <Select
               onValueChange={(event) => {
                 setResponseValue(event);
+                if (
+                  event === "Gladly Declines" ||
+                  event === "Regretfully Declines"
+                ) {
+                  setPeopleValues([]);
+                } else if (peopleValues.length === 0) {
+                  setPeopleValues([{}]);
+                }
               }}
             >
               <SelectTrigger className="w-[180px] ">
@@ -266,6 +283,11 @@ export function RSVP({ ...props }) {
               className="mb-5 mt-5"
             />
             {repeatableSection()}
+            <Textarea
+              id="comments"
+              placeholder="Do you have any questions or secret messages?"
+              className="mb-5 mt-5"
+            />
             <div className="flex flex-col items-center">
               <Button type="submit" className="">
                 Submit
