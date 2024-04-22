@@ -5,6 +5,7 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import farmMap from "../assets/map-tamarack-farm.jpg";
+import { cn } from "./utils";
 
 export const dailyEvents = [
   {
@@ -13,7 +14,12 @@ export const dailyEvents = [
       {
         time: "Afternoon",
         description:
-          " Arrive on Friday (if you'd like!) to help us set the stage for the weekend and embrace the great outdoors.",
+          "Arrive on Friday (if you'd like!) to help us set the stage for the weekend and embrace the great outdoors.",
+      },
+      {
+        time: "Evening",
+        description:
+          "Welcome dinner and campfire! We'll have a casual evening of food, drinks, and catching up with friends and family.",
       },
     ],
   },
@@ -77,9 +83,11 @@ export function DailySchedule({ ...props }) {
           </section>
         );
       })}
-      <Accordion type="single" collapsible className="w-full mx-auto">
+      <Accordion type="single" collapsible className="mx-auto">
         <AccordionItem value="map">
-          <AccordionTrigger>View Map of Tamarack Farm</AccordionTrigger>
+          <AccordionTrigger className={cn("cursor-pointer w-3/6 text-center ")}>
+            <span className="text-2xl">View Map of Tamarack Farm</span>
+          </AccordionTrigger>
           <AccordionContent>
             <img src={farmMap} alt="Camp Map" />
           </AccordionContent>

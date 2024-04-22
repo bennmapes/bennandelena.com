@@ -1,18 +1,24 @@
 import { buttonVariants } from "@/components/ui/button";
 import { ChevronRightIcon } from "lucide-react";
 import { cn } from "./utils";
-import tamarackFarm  from "/src/assets/photos/accomidations/tamarak_farm.png";
+import tamarackFarmOpenAir from "/src/assets/photos/accomidations/tamarak_farm_open_air.png";
 import inAtWatersEdge from "/src/assets/photos/accomidations/waters-edge.jpeg";
 import woodstockInn from "/src/assets/photos/accomidations/woodstock_inn.jpg";
+
+import { AccomidationsInfo } from "./accomidationsInfo";
 
 export const accomidations = [
   {
     name: "Tamarack Farm",
     address_line_1:
-      "Camp out with us! Prepare for the charm of outdoor living! While these three-sided lean-to's are as rustic as they come, on a clear night they are million-star hotels.",
+      "Stay with us! We have ample free accommodations for those of you that want to stay at the farm.",
     address_line_2: "",
-    image: tamarackFarm,
+    image: tamarackFarmOpenAir,
+    expanded_data: {
+      expanded: false,
+    },
   },
+
   {
     name: "The Inn at Water's Edge",
     address_line_1: "45 Kingdom Rd",
@@ -85,6 +91,7 @@ export function Accomidations({ isDesktop = true, ...props }) {
                 <ChevronRightIcon className="h-4 w-4" />
               </a>
             )}
+            {location.expanded_data && <AccomidationsInfo />}
           </div>
         </div>
       ))}

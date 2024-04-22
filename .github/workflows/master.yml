@@ -19,7 +19,9 @@ permissions:
 concurrency:
   group: 'pages'
   cancel-in-progress: true
-
+env:
+  # Setting an environment variable with the value of a configuration variable
+  VITE_GITHUB_APP_SCRIPT_URL: ${{ vars.VITE_GITHUB_APP_SCRIPT_URL }}
 jobs:
   # Single deploy job since we're just deploying
   deploy:
@@ -28,6 +30,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Check Environment
+        run: echo "$VITE_GITHUB_APP_SCRIPT_URL"
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Bun

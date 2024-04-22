@@ -5,6 +5,7 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import { CarFront, Plane } from "lucide-react";
+import { cn } from "./utils";
 
 export function GettingThere({ ...props }) {
   return (
@@ -45,7 +46,9 @@ export function GettingThere({ ...props }) {
       </section>
       <Accordion type="single" collapsible className="w-full mx-auto">
         <AccordionItem value="map">
-          <AccordionTrigger>View in Google Maps</AccordionTrigger>
+          <AccordionTrigger className={cn("cursor-pointer w-3/6 text-center ")}>
+            <span className="text-2xl">View in Google Maps</span>
+          </AccordionTrigger>
           <AccordionContent>
             {/* <img src={farmMap} alt="Camp Map" /> */}
             <iframe
