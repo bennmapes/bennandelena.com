@@ -17,7 +17,7 @@ export const dailyEvents = [
           "Arrive on Friday (if you'd like!) to help us set the stage for the weekend and embrace the great outdoors.",
       },
       {
-        time: "Evening",
+        time: "5:00 pm - Evening",
         description:
           "Welcome dinner and campfire! We'll have a casual evening of food, drinks, and catching up with friends and family.",
       },
@@ -26,12 +26,17 @@ export const dailyEvents = [
   {
     title: "Saturday, September 21st",
     events: [
-      { time: "Afternoon", description: "Join us for a heartfelt ceremony" },
-      { time: "Evening", description: "Dinner and dancing under the stars" },
+      {
+        time: "3:00 pm",
+        description: "Join us for a heartfelt ceremony on the farmhouse lawn",
+      },
+      { time: "4:00 pm", description: "Photos, cocktails, and games" },
+      { time: "6:00 pm", description: "Reception dinner in the farmhouse" },
+      { time: "Evening", description: "Dance party in the barn" },
       {
         time: "Late Night",
         description:
-          "Campfire and s'mores! For those staying overnight, prepare for a truly rustic experience in three-sided lean-tos. It’s all part of the adventure!",
+          "Campfire and s'mores! For those staying overnight, prepare for a truly rustic experience. It’s all part of the adventure!",
       },
     ],
   },
@@ -39,7 +44,7 @@ export const dailyEvents = [
     title: "Sunday, September 22nd",
     events: [
       {
-        time: "Morning",
+        time: "9:00 am",
         description:
           "A casual farewell, sharing stories of the past days' festivities.",
       },
