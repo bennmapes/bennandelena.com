@@ -13,7 +13,7 @@ import tamarackFarmhouse2 from "/src/assets/photos/accomidations/tamarak_farmhou
 import farmMap from "../assets/map-tamarack-farm.jpg";
 
 import { ChevronRightIcon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "./utils";
 
 export const accomidationsInfo = {
@@ -91,6 +91,15 @@ export const accomidationsInfo = {
 
 export function AccomidationsInfo({ buttonText = "Read More!", ...props }) {
   const [open, setOpen] = useState(false);
+
+  // If url has #rsvpFormOpen, open the form
+  useEffect(() => {
+    if (window.location.hash === "#accomidationsInfo") {
+      console.log("Opening Form");
+      setOpen(true);
+      window.location.hash = "";
+    }
+  });
 
   const openInNewTab = (url: string) => {
     const newWindow = window.open(url, "_blank", "noopener,noreferrer");

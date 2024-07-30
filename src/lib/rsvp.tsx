@@ -7,7 +7,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { RSVPForm } from "./rsvpForm";
 import { ChevronRightIcon } from "lucide-react";
@@ -15,6 +15,16 @@ import { cn } from "./utils";
 
 export function RSVP({ ...props }) {
   const [open, setOpen] = useState(false);
+
+
+  // If url has #rsvpFormOpen, open the form
+  useEffect(() => {
+    if (window.location.hash === "#rsvpFormOpen") {
+      console.log("Opening Form");
+      setOpen(true);
+      window.location.hash = "";
+    }
+  });
 
   return (
     <div {...props}>
