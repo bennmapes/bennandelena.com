@@ -9,15 +9,25 @@ import { cn } from "./utils";
 
 export const dailyEvents = [
   {
+    title: "Thursday, September 19th",
+    events: [
+      {
+        time: "5pm onward",
+        description:
+          "A fun friends and family evening at Feast and Field with local food and live music.",
+      },
+    ],
+  },
+  {
     title: "Friday, September 20th",
     events: [
       {
-        time: "Afternoon",
+        time: "12pm - 5pm",
         description:
-          "Arrive on Friday (if you'd like!) to help us set the stage for the weekend and embrace the great outdoors.",
+          "Arrive on Friday (if you'd like!) to help us set the stage for the weekend and embrace the great outdoors. There will be signup sheets for various tasks, so please come prepared to lend a hand.",
       },
       {
-        time: "5:00 pm - Evening",
+        time: "6:00 pm",
         description:
           "Welcome dinner and campfire! We'll have a casual evening of food, drinks, and catching up with friends and family.",
       },
@@ -27,14 +37,14 @@ export const dailyEvents = [
     title: "Saturday, September 21st",
     events: [
       {
-        time: "3:00 pm",
+        time: "3:30 pm",
         description: "Join us for a heartfelt ceremony on the farmhouse lawn",
       },
       { time: "4:00 pm", description: "Photos, cocktails, and games" },
-      { time: "6:00 pm", description: "Reception dinner in the farmhouse" },
-      { time: "Evening", description: "Dance party in the barn" },
+      { time: "5:30 pm", description: "Reception dinner in the farmhouse" },
+      { time: "8:00 pm", description: "Dance party in the barn" },
       {
-        time: "Late Night",
+        time: "10:30pm+",
         description:
           "Campfire and s'mores! For those staying overnight, prepare for a truly rustic experience. It’s all part of the adventure!",
       },

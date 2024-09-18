@@ -92,10 +92,9 @@ export const accomidationsInfo = {
 export function AccomidationsInfo({ buttonText = "Read More!", ...props }) {
   const [open, setOpen] = useState(false);
 
-  // If url has #rsvpFormOpen, open the form
+  // If url has #accomidationsInfo, open the form
   useEffect(() => {
     if (window.location.hash === "#accomidationsInfo") {
-      console.log("Opening Form");
       setOpen(true);
       window.location.hash = "";
     }

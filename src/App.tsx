@@ -10,7 +10,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useMediaQuery } from "./hooks/use-media-query";
 import {
   DrawerContent,
@@ -85,6 +85,34 @@ function App() {
     if (!ref?.current) return;
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Manage scrolling for hash links
+  useEffect(() => {
+    // Check if the hash is present in the URL 
+    const hash = window.location.hash;
+    switch (hash) {
+      case "#ourStory":
+        handleScrollRef(usRef);
+        break;
+      case "#schedule":
+        handleScrollRef(scheduleRef);
+        break;
+      case "#directions":
+        handleScrollRef(directionsRef);
+        break;
+      case "#accomidations":
+        handleScrollRef(accomidationsRef);
+        break;
+      case "#faq":
+        handleScrollRef(faqRef);
+        break;
+      case "#rsvp":
+        handleScrollRef(rsvpRef);
+        break;
+      default:
+        break;
+    }
+  });
 
   const renderMainMenu = () => {
     return isDesktop ? (
